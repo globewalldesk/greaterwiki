@@ -1,0 +1,87 @@
+COMPONENTS
+First, I'll discuss components and how they interact. These may not map neatly
+to classes or methods.
+
+User objects:
+First, of course, there are users and their passwords. I don't want anything
+fancy, so if anybody runs into any problem (lost password, they want to change
+password, etc.), I'd simply view/edit the database by hand. I wouldn't include
+any email addresses because I don't want to learn email stuff for this
+project. I would, however, have to learn about sessions and cookies, but I
+think that's not going to be that hard, on Sinatra.
+
+Then there will be user objects related to user behavior in the system,
+including a list of topics and articles visited, topics and articles added, and
+articles rated.
+
+User methods:
+# Create user account and password
+# Log in
+# Log out
+# Create a session?
+# End a session?
+# Create a name to go with the user
+# Create a description to go with the user
+# Edit name
+# Edit description
+# Delete account
+# List topics and articles visited, added, and rated.
+# Stats on the foregoing
+
+Topic objects:
+Then there are topics. Each topic has a definition, related topics, and a number
+of articles. Really there isn't more to it than that.
+
+Topic methods:
+# List articles associated with topic, in order of rating
+
+Definition objects:
+Definitions are basically a string, but I'll want an edit history available, as
+well as the author who created it.
+
+Definition methods:
+# Create def
+# Edit def
+# Delete def
+# Display edit history
+
+Related topics objects:
+This is just a list of topics associated with a topic. The author of each
+related topic.
+
+Related topics methods:
+# Add related topic
+# Delete related topic
+# List related topics
+
+Article objects:
+Each article has a URL, a source, and a rating hash (?). The rating hash would
+be a mapping of users to ratings.
+
+Article methods:
+# Add article
+# Reject article as dupe
+# Delete article
+# Edit source
+# Delete source for article
+# Add/edit rating for article by user
+# Delete rating for article by user
+
+Etc., not done.
+
+ANALYSIS
+While I think I could do all of this with Ruby and Sinatra and my currently
+very limited JavaScript and HTML and CSS, I imagine what it would be like, and
+I think: there are all sorts of "obvious must-have" features that I am *so*
+close to being able to add, but which I don't know how to add with Ruby and
+Sinatra. Then I think that the purpose of Rails is precisely to make such stuff
+easy. Then, I think that the objects and methods described above are probably
+going to require a huge amount of research and time, amounting to a few months.
+In that time I'll be learning how to do precisely the same things, only better,
+in Rails.
+
+Conclusion: I might as well be patient and execute the project in Rails, at the
+same time that I'm creating sample_app, exactly as I have imagined doing. I can
+use the above plan, of course. So I guess the way forward is to make two apps
+concurrently: sample_app and greaterwiki. Seems like an awesome way to practice
+what I've learned via sample_app, anyway.
