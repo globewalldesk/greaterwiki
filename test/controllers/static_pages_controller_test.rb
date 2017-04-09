@@ -5,6 +5,10 @@ class StaticPagesControllerTest < ActionController::TestCase
     get :home
     assert_response :success
     assert_select "title", "GreaterWiki | Finding the Best Encyclopedia Articles Online"
+    assert_select "a[href=?]", root_path
+    assert_select "a[href=?]", about_path
+    assert_select "a[href=?]", help_path
+    assert_select "div.header_search_form"
   end
 
   test "should get about" do

@@ -1,0 +1,12 @@
+    <header>
+      <div class="logo"><%= link_to "Greater<br><span class='larger'>Wiki</span>".html_safe, root_path %></div>
+      <div class="header_search_form">
+        <form action="/" method="post">
+          <label for="header_search" hidden>Search Form</label>
+          <input type="text" id="header_search" placeholder="Search!">
+        </form>
+      </div>
+      <nav>
+        <%= link_to "Help and FAQ", help_path %>
+      </nav>
+    </header>
