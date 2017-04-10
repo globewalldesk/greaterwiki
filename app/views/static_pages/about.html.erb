@@ -1,3 +1,13 @@
 <% provide :title, "About Us" %>
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<article class="article">
+  <h1 hidden>GreaterWiki: About Us</h1>
+  <section>
+    <h2>About Us</h2>
+    <p>GreaterWiki is currently just an educational project for Larry Sanger to
+    learn Rails and other technologies necessary for modern websites. But hold 
+    on to your hat...it's going to be awesome when it's ready!</p>
+  </section>
+  <div class="login_button center">
+    <%= link_to "Join!", "#", class: "btn btn-lg btn-primary" %>
+  </div>
+</article>

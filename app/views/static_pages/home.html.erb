@@ -1,3 +1,32 @@
 <% provide :title, "Finding the Best Encyclopedia Articles Online" %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<article class="article">
+  <div class="home_page_article_header">
+    <h1>GreaterWiki</h1>
+    <p>GreaterWiki will be an open, worldwide, participatory project to collect 
+    and rate the best encyclopedia articles on the Internet on every topic—and 
+    to encourage even more.</p>
+  </div>
+  <section class="introductory_text">
+    <h2>Join us!</h2>
+    
+    <p>There is a critical need for GreaterWiki.</p>
+    
+    <p>Wikipedia has given up the responsibility of organizing expert knowledge, 
+    and Google's algorithms rank pages based on popularity rather than 
+    credibility. There is no easy way to find the most reliable information 
+    online.</p>
+    
+    <p>Imagine if the world's scholars, students, and smart people came together 
+    to share their best explanations of everything, linked from one place, and 
+    ranked by the community in each topic. We desperately need a free 
+    marketplace of encyclopedic information, not dominated by any one, biased 
+    group, but open to many competing groups, each with its own set of 
+    independent ratings.</p>
+    
+    <p>That's what we're building: the place to go to find the best of our 
+    knowledge.</p>
+  </section>
+  <div class="login_button center">
+    <%= link_to "Join!", "#", class: "btn btn-lg btn-primary" %>
+  </div>
+</article>

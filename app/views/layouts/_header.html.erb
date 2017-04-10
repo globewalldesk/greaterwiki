@@ -1,13 +1,17 @@
-    <header>
-      <div class="logo"><%= link_to "Greater<br><span class='larger'>Wiki</span>".html_safe, root_path %></div>
-      <div class="header_search_form">
-        <form action="/" method="post">
-          <label for="header_search" hidden>Search Form</label>
-          <input type="text" id="header_search" placeholder="Search!">
-        </form>
+    <header class="navbar navbar-fixed-top navbar-inverse custom_navbar">
+      <div class="container">
+        <div class="logo"><%= link_to "Greater<br><span class='larger'>Wiki</span>".html_safe, root_path %></div>
+        <div class="header_search_form">
+          <form action="/" method="post">
+            <label for="header_search" hidden>Search Form</label>
+            <input type="text" id="header_search" placeholder="Search!">
+          </form>
+        </div>
+        <nav class="header_nav nav navbar-nav navbar-right">
+          <ul>
+            <li><%= link_to "About Us", about_path %></li>
+            <li><%= link_to "Help and FAQ", help_path %></li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <%= link_to "About Us", about_path %>
-        <%= link_to "Help and FAQ", help_path %>
-      </nav>
     </header>
