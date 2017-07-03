@@ -83,6 +83,5 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "Abcdefg5"
     assert @user.valid?
   end
-
   
 end
