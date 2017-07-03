@@ -19,6 +19,7 @@ guard :minitest, spring: "bin/rake test", all_on_start: false do
   watch('app/views/layouts/application.html.erb') do
     'test/integration/site_layout_test.rb'
   end
+  watch(%r{^app/views/shared/_.*\.html\.erb$}) { integration_tests }
   watch('app/helpers/sessions_helper.rb') do
     integration_tests << 'test/helpers/sessions_helper_test.rb'
   end
