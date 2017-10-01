@@ -20,7 +20,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                     password: "Foobar123", 
                                     password_confirmation: "Foobar123" }
     end
+    assert_not flash.empty?
     assert_template 'users/show'
+    assert is_logged_in?
   end
   
   test "flash messages appear as expected" do
@@ -30,6 +32,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                           password_confirmation: "FooB4rry" }
     assert flash[:success]
     assert_not flash[:danger]
+    assert_select "div.alert"
+    assert_select "div.alert-success"
     assert "div.alert-success", "Welcome to the Sample App!"
     post_via_redirect users_path, user: { name: "Foo Bar", email: "bad@ema%@il",
                                           password: "FooB4rry", 

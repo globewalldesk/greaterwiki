@@ -1,12 +1,16 @@
 module UsersHelper
   
-  # Return gravatar (thumbnail) for the user.
-  def gravatar_for(user, options = { size: 80 } )
+  # Returns the Gravatar for the given user.
+  def gravatar_for(user, options = { size: 80 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    # This actually returns the thumbnail itself, so that the gravatar_for 
-    # method returns an image.
-    image_tag(gravatar_url, alt: user.name, class: "gravatar") 
+    image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
-end
+
+  # Fiddle with contents of error messages (e.g., toss dups).
+  def massage_error_messages(messages)
+    messages = messages.uniq
+  end
+
+end # of UsersHelper
