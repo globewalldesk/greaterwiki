@@ -1,12 +1,12 @@
 class AccountActivationsController < ApplicationController
 
-  def edit 
+  def edit
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate
       log_in user
-      flash[:success] = "Your account has been activated. Now you can 
-                         rate some Start This!!"
+      flash[:success] = "Your account has been activated. Now you can
+                         rate some ideas!"
       redirect_to user
     else
       flash[:danger] = "Activation link invalid, expired, or already used."
