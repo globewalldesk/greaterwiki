@@ -31,4 +31,15 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: 'delete', count: 0
   end
   
+  test "unactivated users don't show up in users/ list" do
+    log_in_as(@non_admin)
+    get users_path
+    assert_select 'a', text: @admin.name, count: 1 # Activated account seen.
+    assert_select 'a', text: @non_admin.name, count: 2 # Activated account seen.
+    @non_admin.update_attribute(:activated, false)
+    log_in_as(@admin) # If user isn't activated, user can't see this page.
+    get users_path
+    assert_select 'a', text: @non_admin.name, count: 0  # But not inactivated.
+  end
+  
 end
