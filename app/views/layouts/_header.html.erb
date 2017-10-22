@@ -1,14 +1,13 @@
     <header class="navbar navbar-fixed-top navbar-inverse custom_navbar">
       <div class="container">
         <div class="logo">
-          <%= link_to "<span class='top'>Spare</span><br>
-          <span class='larger bottom'>Plans</span>".html_safe, root_path %>
+          <%= link_to "<span class='top'>Start</span><br>
+          <span class='larger bottom'>This!</span>".html_safe, root_path %>
         </div>
-        <div class="header_search_form">
-          <form action="/" method="post">
-            <label for="header_search" hidden>Search Form</label>
-            <input type="text" id="header_search" placeholder="Search!">
-          </form>
+        <div class="tagline">
+          <small>Free ideas to change the world.<br>
+            By Wikipedia’s co-founder and friends.
+            <span>You in?</span></small>
         </div>
         <nav class="header_nav nav navbar-nav navbar-right">
           <ul>
@@ -19,10 +18,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Profile", current_user %></li>
-                  <li><%= link_to "Settings", 
+                  <li><%= link_to "Settings",
                                   edit_user_path(current_user) %></li>
                   <li class="divider"></li>
-                  <li><%= link_to "Log out", 
+                  <li><%= link_to "Log out",
                                   logout_path, method: "delete" %></li>
                 </ul>
               </li>

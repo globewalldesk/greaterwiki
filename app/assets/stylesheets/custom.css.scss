@@ -90,12 +90,12 @@ header.custom_navbar {
     }
   }
 
-  .logo, .header_search_form, .header_nav {
+  .logo, .tagline .header_nav {
     float: left;
   }
-  
+
   .logo {
-    text-align: center;
+    text-align: left;
     color: #fff;
     .top {
       letter-spacing: 1.8px;
@@ -106,31 +106,39 @@ header.custom_navbar {
       font-size: 1.3em;
       line-height: 80%;
       font-weight: 900;
-      letter-spacing: 0.6px;
+      letter-spacing: 1.2px;
     }
   }
 
-  .header_search_form {
-    margin-top: 5px;
-    margin-left: 15px;
+  .tagline {
+    float: left;
+    margin-left: 20px;
+    width: 280px;
+
+    small {
+      color: #bbb;
+      span {
+        color: #eee;
+      }
+    }
   }
-  
-  
+
+
   nav.header_nav {
     position: relative;
     top: 9px;
-    
+
     ul {
       list-style: none;
-      
+
       li {
         float: right;
         margin-left: 15px;
-        
+
         .divider {
         }
       }
-      
+
       .dropdown-toggle {
         background-color: #222;
         &:hover {
@@ -140,12 +148,12 @@ header.custom_navbar {
           background-color: #222;
         }
       }
-      
+
       .dropdown-menu {
         top: 34px !important;
         a {
           color: gray !important;
-          
+
           &:hover {
             color: black !important;
           }
@@ -199,22 +207,22 @@ aside {
 /* article */
 
 article.article {
-  margin: 20px 0px;  
-  
+  margin: 20px 0px;
+
   .home_page_article_header {
     margin: 0px 20px;
     padding: 10px 40px;
     border-bottom: #ddd 2px solid;
-    
+
     p {
       font-size: 1.5em;
     }
   }
-  
+
   .login_button {
     margin: 10px 0px 10px 0px;
   }
-  
+
   .faq {
     span.question {
       font-weight: bold;
@@ -308,4 +316,3 @@ footer {
     }
   }
 }
-

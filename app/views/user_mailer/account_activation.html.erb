@@ -1,8 +1,8 @@
-<h1>SparePlans.org account activation</h1>
+<h1>StartThis.org account activation</h1>
 
 <p>Dear <%= @user.name %>,</p>
 
-<p>Welcome to SparePlans.org! Please click here to activate your account:</p>
+<p>Welcome to StartThis.org! Please click here to activate your account:</p>
 
 <p><b> > <%= link_to "Activate", edit_account_activation_url(@user.activation_token, 
                                                        email: @user.email) %> < </b></p>

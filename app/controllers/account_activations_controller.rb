@@ -6,7 +6,7 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "Your account has been activated. Now you can 
-                         rate some Spare Plans!"
+                         rate some Start This!!"
       redirect_to user
     else
       flash[:danger] = "Activation link invalid, expired, or already used."
