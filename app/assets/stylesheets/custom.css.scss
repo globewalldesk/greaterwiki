@@ -95,13 +95,18 @@ header.custom_navbar {
   }
   
   .logo {
-    color: #fff;
     text-align: center;
-    span {
-      font-size: 1.5em;
+    color: #fff;
+    .top {
+      letter-spacing: 1.8px;
+      font-weight: 600;
+      font-height: 80%;
+    }
+    .bottom {
+      font-size: 1.3em;
       line-height: 80%;
       font-weight: 900;
-      letter-spacing: 1.1px;
+      letter-spacing: 0.6px;
     }
   }
 

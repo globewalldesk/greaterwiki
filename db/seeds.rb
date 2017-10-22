@@ -1,7 +1,9 @@
 User.create!(name:    "Filby Federson",
              email:   "feder@filby.com",
              password:              "Password9",
-             password_confirmation: "Password9")
+             password_confirmation: "Password9",
+             activated: true,
+             activated_at: Time.zone.now)
 
 emails = []
 99.times do |n| 
@@ -16,5 +18,7 @@ end
   User.create!(name: name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end

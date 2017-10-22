@@ -4,14 +4,26 @@ class SessionsController < ApplicationController
   
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
-    # If user is found and the password submitted is groovalicious, then...
-    if @user && @user.authenticate(params[:session][:password])
-      # ...log in and redirect to user's show page.
-      log_in @user
+    if @user && @user.activated? && @user.authenticate(params[:session][:password])
+      # Log the user in.
+      log_in(@user)
+      # In models/users.rb.
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       redirect_back_or @user
     else
-      flash.now[:danger] = 'Invalid email and/or password'
+      # Create an error message depending on the problem.
+      if ! @user
+        flash.now[:danger] ="User not found."
+      elsif ! @user.authenticate(params[:session][:password])
+        flash.now[:danger] = "Password incorrect."
+      elsif ! @user.activated?
+        # Gives the user a handy reactivation button right in the flash.
+        flash.now[:danger] = "Hi #{@user.name}! You need to activate your 
+                              account before you can log in. 
+                              #{view_context.link_to('Want a new activation 
+                              email?', reactivate_user_path(@user), 
+                              method: :post)}"
+      end
       render 'new'
     end
   end

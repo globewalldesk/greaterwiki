@@ -17,10 +17,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      remember @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_back_or @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
@@ -44,6 +43,19 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  # Resends activation email. This has its own 'reactivate' route (see 
+  # routes.rb) and the route is followed only via a link, contained in an error 
+  # flash, found at sessions_controller.rb.
+  def reactivate
+    @user = User.find(params[:id])
+    @user.create_activation_digest
+    @user.update_attribute(:activation_digest, @user.activation_digest)
+    @user.send_activation_email
+    flash[:info] = "Click the activation link we just emailed you, 
+                    and we'll log you in."
+    redirect_to root_url
   end
 
   private

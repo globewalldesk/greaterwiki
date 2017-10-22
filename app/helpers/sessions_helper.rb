@@ -19,20 +19,18 @@ module SessionsHelper
   
   # Returns the current logged-in user (if any).
   def current_user
-    # First check if there is a temporary cookie with :user_id; use that if so.
     if (user_id = session[:user_id])
-      @current_user ||= User.find_by(id: session[:user_id])
-    # Otherwise, check for a permanent cookie with :user_id, and use that to
-    # log the user in.
+      @current_user ||= User.find(user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      # .authenticated? is in models/users.rb.
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         log_in user
-        @current_user = user # Returns this value.
+        @current_user = user
       end
     end
   end
-  
+   
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
