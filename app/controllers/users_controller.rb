@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
   end
-  
+
   def show
     @user = User.find(params[:id])
     unless @user.activated?
@@ -17,28 +17,29 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "Please check your email to activate your account. Allow
+        a minute or two."
       redirect_to root_url
     else
       render 'new'
     end
   end
-  
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "Another one bites the dust!"
     redirect_to users_url
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -49,28 +50,28 @@ class UsersController < ApplicationController
     end
   end
 
-  # Resends activation email. This has its own 'reactivate' route (see 
-  # routes.rb) and the route is followed only via a link, contained in an error 
+  # Resends activation email. This has its own 'reactivate' route (see
+  # routes.rb) and the route is followed only via a link, contained in an error
   # flash, found at sessions_controller.rb.
   def reactivate
     @user = User.find(params[:id])
     @user.create_activation_digest
     @user.update_attribute(:activation_digest, @user.activation_digest)
     @user.send_activation_email
-    flash[:info] = "Click the activation link we just emailed you, 
+    flash[:info] = "Click the activation link we just emailed you,
                     and we'll log you in."
     redirect_to root_url
   end
 
   private
-  
+
     def user_params
-      params.require(:user).permit(:name, :email, :password, 
+      params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    
+
     # Before filters
-    
+
     # Confirms a user is in fact logged in.
     def logged_in_user
       unless logged_in?
@@ -79,17 +80,16 @@ class UsersController < ApplicationController
         redirect_to login_url
       end
     end
-    
+
     # Confirms a user is in fact the correct user.
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
-    
+
     # Confirms that a user is an admin user.
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-  
-end
 
+end
