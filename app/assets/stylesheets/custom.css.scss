@@ -105,15 +105,14 @@ header {
     float: left;
     margin: 4px 0 0 10px;
     width: 130px;
-
-    small {
-      color: #ccc;
-      .extra {
-        display: none;
-      }
-      .youin {
-        color: #eee;
-      }
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: 4.5px;
+    .extra {
+      display: none;
+    }
+    .youin {
+      color: #eee;
     }
   }
 
