@@ -1,12 +1,18 @@
 <% provide :title, "Finding the Best Encyclopedia Articles Online" %>
 <article class="article">
   <div class="home_page_article_header">
-    <h1>Start This</h1>
+    <h1>StartThis.org</h1>
     <p>
-      I've had far more exciting ideas than I can possibly execute myself.
-      So I've decided to share them with the world.
+      Come on&#151;do it!
+    </p><p>
+      Like you, I've had many more exciting ideas than I can possibly execute
+      myself.
+      I've decided to share mine with the world.
       If they excite you, please use them with my compliments.
-      You can contribute your own, too.
+      You can contribute your own, too.<br>
+      <div class="text-right">&#151;<%= link_to "Larry Sanger",
+                                  User.find_by(email:
+                                  "yo.larrysanger@gmail.com") %></div>
     </p>
   </div>
   <section class="introductory_text">

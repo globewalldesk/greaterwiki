@@ -1,3 +1,5 @@
+$navbar-inverse-link-color: #ddd;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -16,10 +18,6 @@ $gray-medium-light: #eaeaea;
 
 /* ========================================================================== */
 /* universal */
-
-body {
-  padding-top: 60px;
-}
 
 section {
   overflow: auto;
@@ -56,49 +54,43 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  text-align: center;
-  margin-bottom: 20px;
-}
+@media (min-width: 600px) {
+  h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-h2 {
-  font-size: 2em;
-  letter-spacing: -1px;
-  font-weight: normal;
-  color: #777;
-}
+  h2 {
+    font-size: 2em;
+    letter-spacing: -1px;
+    font-weight: normal;
+    color: #777;
+  }
 
-p {
-  font-size: 1.1em;
-  line-height: 1.5em;
+  p {
+    font-size: 1.1em;
+    line-height: 1.5em;
+  }
 }
 
 /* ========================================================================== */
 /* header */
-header.custom_navbar {
-  height: 45px;
-  padding-top: 5px;
-
-  a {
-    color: #ddd;
-
-    &:hover {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-
-  .logo, .tagline .header_nav {
-    float: left;
-  }
+header {
 
   .logo {
-    text-align: left;
-    color: #fff;
+    float: left;
+    margin: 4px 0 0 10px;
+    a {
+      color: #eee;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
     .top {
-      letter-spacing: 1.8px;
+      letter-spacing: 2px;
       font-weight: 600;
       font-height: 80%;
     }
@@ -106,61 +98,39 @@ header.custom_navbar {
       font-size: 1.3em;
       line-height: 80%;
       font-weight: 900;
-      letter-spacing: 1.2px;
     }
   }
 
   .tagline {
     float: left;
-    margin-left: 10px;
-    width: 300px;
+    margin: 4px 0 0 10px;
+    width: 130px;
 
     small {
-      color: #bbb;
-      span {
+      color: #ccc;
+      .extra {
+        display: none;
+      }
+      .youin {
         color: #eee;
       }
     }
   }
 
+  @media (min-width: 900px)  {
+    .tagline {
+      margin-left: 10px;
+      width: 300px;
 
-  nav.header_nav {
-    position: relative;
-    top: 9px;
-
-    ul {
-      list-style: none;
-
-      li {
-        float: right;
-        margin-left: 15px;
-
-        .divider {
-        }
-      }
-
-      .dropdown-toggle {
-        background-color: #222;
-        &:hover {
-          background-color: #222;
-        }
-        &:focus {
-          background-color: #222;
-        }
-      }
-
-      .dropdown-menu {
-        top: 34px !important;
-        a {
-          color: gray !important;
-
-          &:hover {
-            color: black !important;
-          }
+      small {
+        .extra {
+          display: inline;
         }
       }
     }
   }
+
+  $dropdown-divider-bg: #bbb;
 }
 
 
@@ -204,18 +174,23 @@ aside {
 
 
 /* ========================================================================== */
-/* article */
+/* Static Pages */
 
-article.article {
-  margin: 20px 0px;
+.article {
 
   .home_page_article_header {
-    margin: 0px 20px;
-    padding: 10px 40px;
+    margin: 10px 0px;
+    padding: 5px 20px;
     border-bottom: #ddd 2px solid;
+    p { font-size: 1.2em; }
+  }
 
-    p {
-      font-size: 1.5em;
+  @media (min-width: 600px) {
+
+    .home_page_article_header {
+      margin: 0px 20px;
+      padding: 10px 40px;
+      p { font-size: 1.5em; }
     }
   }
 
@@ -224,10 +199,10 @@ article.article {
   }
 
   .faq {
-    span.question {
+    .question {
       font-weight: bold;
     }
-    span.answer {
+    .answer {
       margin-left: 30px;
     }
   }
@@ -235,6 +210,12 @@ article.article {
 
 /* ========================================================================== */
 /* User index */
+
+@media (max-width: 400px) {
+  .pagination {
+    font-size: 0.8em;
+  }
+}
 
 .users {
   list-style: none;
