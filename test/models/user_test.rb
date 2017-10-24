@@ -93,6 +93,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "no useree, no messageee" do
+    @user.save
+    @message = @user.messages.create(content: "Yo!", author: "God")
+    assert_difference 'Message.count', -1 do
+      @user.destroy
+    end
+  end
+
   test "title and description are optional" do
     @user.valid? # Note, test user doesn't include these fields.
   end
