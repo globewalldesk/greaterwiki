@@ -6,7 +6,7 @@ User.create!(name:    "Filby Federson",
              activated_at: Time.zone.now)
 
 emails = []
-99.times do |n| 
+99.times do |n|
   test = Faker::Internet.email
   emails.include?(test) ? redo : emails[n] = test
 end
@@ -21,4 +21,10 @@ end
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+end
+
+users = User.order(:created_at).take(6)
+50.times do
+  content = Taker::Lorem.sentence(5)
+  users.each { |each| user.microposts.create!(content: content) }
 end
