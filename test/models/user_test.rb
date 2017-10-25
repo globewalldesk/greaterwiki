@@ -68,20 +68,9 @@ class UserTest < ActiveSupport::TestCase
 
 
   # password tests ########################################################
-  test "password should be at least eight characters long" do
-    @user.password = "a" * 7
+  test "password should be at least six characters long" do
+    @user.password = "a" * 5
     assert_not @user.valid?
-  end
-
-  test "passwords should include num and lc and uc letters" do
-    @user.password = @user.password_confirmation = "abcdefgh"
-    assert_not @user.valid?
-    @user.password = @user.password_confirmation = "Abcdefgh"
-    assert_not @user.valid?
-    @user.password = @user.password_confirmation = "abcdefg5"
-    assert_not @user.valid?
-    @user.password = @user.password_confirmation = "Abcdefg5"
-    assert @user.valid?
   end
 
   # profile tests ############################################################

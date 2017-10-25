@@ -9,10 +9,8 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 8 }
-  validates :password, format: { with: /[a-z]/ }
-  validates :password, format: { with: /[A-Z]/ }
-  validates :password, format: { with: /\d/ }
+  validates :password, length: { minimum: 6,
+                                 message: "must have at least 6 characters" }
   validates :title, length: { maximum: 255 }
   validates :description, length: { maximum: 13_000 } # ~2000 words
 

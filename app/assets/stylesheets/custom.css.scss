@@ -103,11 +103,10 @@ header {
 
   .tagline {
     float: left;
-    margin: 4px 0 0 10px;
+    margin: 6.5px 0 0 10px;
     width: 130px;
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: #ccc;
-    margin-top: 4.5px;
     .extra {
       display: none;
     }
@@ -120,11 +119,8 @@ header {
     .tagline {
       margin-left: 10px;
       width: 300px;
-
-      small {
-        .extra {
-          display: inline;
-        }
+      .extra {
+        display: inline;
       }
     }
   }
