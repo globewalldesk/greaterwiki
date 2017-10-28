@@ -11,17 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024174215) do
+ActiveRecord::Schema.define(version: 20171028021242) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.string   "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "messages", ["user_id", "created_at", "author"], name: "index_messages_on_user_id_and_created_at_and_author"
+  add_index "messages", ["user_id", "created_at"], name: "index_messages_on_user_id_and_created_at_and_author"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
