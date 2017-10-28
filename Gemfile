@@ -22,6 +22,7 @@ group :development, :test do
   gem 'byebug',      '3.4.0'
   gem 'web-console', '2.0.0.beta3'
   gem 'spring',      '1.1.3'
+  gem 'annotate',    '2.7.2' # Adds schema info to models, etc.
 end
 
 group :test do

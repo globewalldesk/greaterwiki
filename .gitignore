@@ -20,4 +20,5 @@
 /spring/*.pid
 
 # Ignore planning files
-planning
+planning.txt
+current.txt
