@@ -87,7 +87,8 @@ class UsersController < ApplicationController
         @user.update_attributes!(title: nil)
         flash[:info] = "Title deleted."
       end
-    elsif params[:user][:description]
+    end
+    if params[:user][:description]
       # And clear out any bad descriptions.
       session[:bad_desc] = nil
       # Save description, if present.

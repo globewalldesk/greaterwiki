@@ -293,7 +293,11 @@ input {
 
   #edit_user_title, #edit_user_desc {
     display: none;
+    textarea {
+      height: 200px;
+    }
   }
+
 }
 
 
