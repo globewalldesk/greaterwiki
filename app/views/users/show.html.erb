@@ -14,59 +14,113 @@
 
   <!-- Title and Description -->
   <div class="title_desc col-md-8">
-      <%
-        # If no title yet, show grey link, which activates a JS method that
-        # displays an edit form. If there is a title, show it with an edit
-        # pencil.
-      %>
-      <% if current_user == @user %>
-        <!-- Always load this initially hidden span, whether or not used -->
-        <!-- Display to user when opened -->
-        <span id="edit_user_title" %>
-          <%= form_for(@user, url: update_description_user_path,
-                       method: :patch) do |f| %>
-            <span class="input_buttons">
-              <%= button_tag "", type: 'submit', class: "btn btn-default
-                  glyphicon glyphicon-ok" %>
-            </span>
-            <span class="input_field">
-              <%= f.text_field :title, class: 'form-control title_input' %>
-            </span>
-          <% end %>
-        </span>
-        <% if @user.title %>
-          <!-- Display user title to user -->
-          <h2 class="user_title">
-            <span class="glyphicon glyphicon-play"></span>&nbsp;
-            <span id="user_title_text"><%= @user.title %></span>
-            <span class="glyphicon glyphicon-pencil"></span>
-          </h2>
+
+    <!-- Title span -->
+    <% if current_user == @user %>
+    <%
+      # If no title yet, show grey link, which activates a JS method that
+      # displays an edit form. If there is a title, show it with an edit
+      # pencil.
+      # Always load this initially hidden span, whether or not used -->
+      # Display to user when opened -->
+    %>
+      <span id="edit_user_title" %>
+        <%= form_for(@user, url: update_description_user_path,
+                     method: :patch) do |f| %>
+          <span class="input_buttons">
+            <%= button_tag "", type: 'submit',
+                               class: "glyphicon glyphicon-ok" %>
+          </span>
+          <span class="input_field">
+            <%= f.text_field :title, class: 'form-control title_input' %>
+          </span>
+        <% end %>
+      </span>
+      <% if @user.title %>
+        <!-- Display user title to user -->
+        <h2 class="user_title">
+          <span class="glyphicon glyphicon-play"></span>&nbsp;
+          <span class="glyphicon glyphicon-pencil"></span>
+          <span id="user_title_text"><%= @user.title %></span>
+        </h2>
 <!-- NOT SURE WHY THIS ISN'T WORKING
-          <% if session[:bad_title] %>
-            <script>
-              var ready = function() {
-                showEditUserTitle();
-              };
-              $(document).ready(ready);
-              $(document).on('page:load', ready);
-            </script>
-          <% end %>
+        <% if session[:bad_title] %>
+          <script>
+            var ready = function() {
+              showEditUserTitle();
+            };
+            $(document).ready(ready);
+            $(document).on('page:load', ready);
+          </script>
+        <% end %>
 -->
-        <% else %>
-          <h2 class="user_title">
-            <span id="user_title_text" class="italics silver">
-              Click to add profile title</span>
-            <span class="glyphicon glyphicon-plus silver"></span>
-          </h2>
-        <% end %>
-      <% elsif current_user != @user %>
-        <% if @user.title %>
-          <!-- Display user title to other user -->
-          <h2 class="user_title_other_user">
-            <span class="glyphicon glyphicon-play"></span>&nbsp;
-            <span class="user_title_text"><%= @user.title %>&nbsp;&nbsp;</span>
-          </h2>
-        <% end %>
+      <% else %>
+        <h2 class="user_title">
+          <span id="user_title_text" class="italics silver">
+            Click to add profile title</span>
+          <span class="glyphicon glyphicon-plus silver"></span>
+        </h2>
       <% end %>
+    <% elsif current_user != @user %>
+      <% if @user.title %>
+        <!-- Display user title to other user -->
+        <h2 class="user_title_other_user">
+          <span class="glyphicon glyphicon-play"></span>
+          <span class="user_title_text"><%= @user.title %></span>
+        </h2>
+      <% end %>
+    <% end %>
+
+    <!-- Description span -->
+    <% if current_user == @user %>
+      <!-- Always load this initially hidden span, whether or not used -->
+      <!-- Display to user when opened -->
+      <span id="edit_user_desc" %>
+        <%= form_for(@user, url: update_description_user_path,
+                     method: :patch) do |f| %>
+          <span class="input_buttons">
+            <%= button_tag "", type: 'submit',
+                               class: "glyphicon glyphicon-ok" %>
+          </span>
+          <span class="input_field">
+            <%= f.text_area :description,
+                             class: 'form-control desc_input' %>
+          </span>
+        <% end %>
+      </span>
+      <% if @user.description %>
+        <!-- Display user title to user -->
+        <p class="user_desc">
+          <span class="glyphicon glyphicon-play"></span>&nbsp;&nbsp;
+          <span class="glyphicon glyphicon-pencil"></span>
+          <span id="user_title_text"><%= @user.description %></span>
+        </p>
+<!-- NOT SURE WHY THIS ISN'T WORKING
+        <% if session[:bad_title] %>
+          <script>
+            var ready = function() {
+              showEditUserTitle();
+            };
+            $(document).ready(ready);
+            $(document).on('page:load', ready);
+          </script>
+        <% end %>
+-->
+      <% else %>
+        <p class="user_desc">
+          <span id="user_desc_text" class="italics silver">
+            Introduce yourself</span>
+          <span class="glyphicon glyphicon-plus silver"></span>
+        </p>
+      <% end %>
+    <% elsif current_user != @user %>
+      <% if @user.description %>
+        <!-- Display user description to other user -->
+        <h2 class="user_desc_other_user">
+          <span class="glyphicon glyphicon-play"></span>
+          <span class="user_desc_text"><%= @user.description %></span>
+        </h2>
+      <% end %>
+    <% end %>
   </div>
 </div>

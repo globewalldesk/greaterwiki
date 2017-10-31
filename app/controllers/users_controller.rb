@@ -69,20 +69,40 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # For smart message, first check if user had a title.
     old_title = @user.title
-    # And clear out any bad titles.
-    session[:bad_title] = nil
-    # Save title, if present.
-    if params[:user][:title].present?
-      # Attempt to save; if failed, flash with warning.
-      begin
-        @user.update_attributes!(title: params[:user][:title])
-      rescue ActiveRecord::RecordInvalid
-        flash[:warning] = "Unable to save. (Too long?)"
-        session[:bad_title] = params[:user][:title]
+    # For smart message, first check if user had a description.
+    old_desc = @user.description
+    if params[:user][:title]
+      # And clear out any bad titles.
+      session[:bad_title] = nil
+      # Save title, if present.
+      if params[:user][:title].present?
+        # Attempt to save; if failed, flash with warning.
+        begin
+          @user.update_attributes!(title: params[:user][:title])
+        rescue ActiveRecord::RecordInvalid
+          flash[:warning] = "Unable to save. (Too long?)"
+          session[:bad_title] = params[:user][:title]
+        end
+      elsif old_title
+        @user.update_attributes!(title: nil)
+        flash[:info] = "Title deleted."
       end
-    elsif old_title
-      @user.update_attributes!(title: nil)
-      flash[:info] = "Title deleted."
+    elsif params[:user][:description]
+      # And clear out any bad descriptions.
+      session[:bad_desc] = nil
+      # Save description, if present.
+      if params[:user][:description].present?
+        # Attempt to save; if failed, flash with warning.
+        begin
+          @user.update_attributes!(description: params[:user][:description])
+        rescue ActiveRecord::RecordInvalid
+          flash[:warning] = "Unable to save. (Too long?)"
+          session[:bad_desc] = params[:user][:description]
+        end
+      elsif old_desc
+        @user.update_attributes!(description: nil)
+        flash[:info] = "Description deleted."
+      end
     end
     # Same logic as before, now for description.
     # Make sure two different [:success] flashes work! Probably not!
