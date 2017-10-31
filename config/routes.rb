@@ -7,15 +7,19 @@ Rails.application.routes.draw do
   root               'static_pages#home'
   get 'about'     => 'static_pages#about'
   get 'help'      => 'static_pages#help'
-  get 'signup'    => 'users#new'
+
   get 'login'     => 'sessions#new'
   post 'login'    => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+  get 'signup'    => 'users#new'
   resources :users do
     member do
-      post 'reactivate' # Resends the activation email.
+      post  'reactivate'         # Resends the activation email.
+      patch 'update_description' # Posts title & description.
     end
   end
+
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

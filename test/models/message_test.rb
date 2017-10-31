@@ -15,8 +15,7 @@ class MessageTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:god)
-    @message = @user.messages.build(content: "Dear God, how's it going?!",
-                                    author: users(:god).name)
+    @message = @user.messages.build(content: "Dear God, how's it going?!")
   end
 
   # Validation Tests #########################################################
@@ -40,13 +39,6 @@ class MessageTest < ActiveSupport::TestCase
   test "content shouldn't be over 5200 characters" do
     @message.content = "x" * 5201
     refute @message.valid?
-  end
-
-  test "message should have an author" do
-    @message.author = " "
-    refute @message.valid?
-    @message.author = "John Doe"
-    assert @message.valid?
   end
 
   test "message should be ordered most recent first" do

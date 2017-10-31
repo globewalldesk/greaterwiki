@@ -105,7 +105,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "no useree, no messageee" do
     @user.save
-    @message = @user.messages.create(content: "Yo!", author: "God")
+    @message = @user.messages.create(content: "Yo!")
     assert_difference 'Message.count', -1 do
       @user.destroy
     end

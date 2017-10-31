@@ -128,7 +128,7 @@ header {
 
 
 /* ========================================================================== */
-/* sidebar */
+/* User Sidebar */
 
 aside {
   section.user_info {
@@ -165,42 +165,6 @@ aside {
   margin-top: 15px;
 }
 
-
-/* ========================================================================== */
-/* Static Pages */
-
-.article {
-
-  .home_page_article_header {
-    margin: 10px 0px;
-    padding: 5px 20px;
-    border-bottom: #ddd 2px solid;
-    p { font-size: 1.2em; }
-  }
-
-  @media (min-width: 600px) {
-
-    .home_page_article_header {
-      margin: 0px 20px;
-      padding: 10px 40px;
-      p { font-size: 1.5em; }
-    }
-  }
-
-  .login_button {
-    margin: 10px 0px 10px 0px;
-  }
-
-  .faq {
-    .question {
-      font-weight: bold;
-    }
-    .answer {
-      margin-left: 30px;
-    }
-  }
-}
-
 /* ========================================================================== */
 /* User index */
 
@@ -221,7 +185,7 @@ aside {
 }
 
 /* ========================================================================== */
-/* forms */
+/* User forms */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -263,6 +227,105 @@ input {
   margin-left: 0;
 }
 
+/* User Title and Description */
+.title_desc {
+
+  /* Common classes for this area */
+  .glyphicon-play {
+    float: left;
+    color: #3F729B;
+    margin-right: 10px;
+    margin-top: 2px;
+  }
+  .glyphicon-pencil, .glyphicon-plus {
+    float: left;
+    font-size: 0.7em;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  .italics {
+    font-style: italic;
+  }
+  .silver {
+    color: silver;
+  }
+
+  .input_field {
+    display: block;
+    overflow: hidden;
+    padding-right: 10px;
+    .title_input {
+      width: 100%;
+    }
+  }
+
+  .input_buttons {
+    float: right;
+    button {
+      border: none;
+      font-size: 1.5em;
+    }
+    .glyphicon-ok {
+      color: green;
+    }
+    .glyphicon-remove {
+      color: red;
+    }
+  }
+
+  /* Only #user_title has an event listener. */
+  .user_title, .user_title_other_user {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.4em;
+  }
+
+  #user_title_text {
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  #edit_user_title {
+    display: none;
+  }
+}
+
+
+/* ========================================================================== */
+/* Static Pages */
+
+.article {
+
+  .home_page_article_header {
+    margin: 10px 0px;
+    padding: 5px 20px;
+    border-bottom: #ddd 2px solid;
+    p { font-size: 1.2em; }
+  }
+
+  @media (min-width: 600px) {
+
+    .home_page_article_header {
+      margin: 0px 20px;
+      padding: 10px 40px;
+      p { font-size: 1.5em; }
+    }
+  }
+
+  .login_button {
+    margin: 10px 0px 10px 0px;
+  }
+
+  .faq {
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-left: 30px;
+    }
+  }
+}
 
 /* ========================================================================== */
 /* footer */

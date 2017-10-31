@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :update_description]
+  before_action :correct_user,   only: [:edit, :update, :update_description]
+  before_action :admin_user,     only: :destroy
   def new
     @user = User.new
   end
@@ -61,6 +62,31 @@ class UsersController < ApplicationController
     flash[:info] = "Click the activation link we just emailed you,
                     and we'll log you in."
     redirect_to root_url
+  end
+
+  # Handles user's posted title and description.
+  def update_description
+    @user = User.find(params[:id])
+    # For smart message, first check if user had a title.
+    old_title = @user.title
+    # And clear out any bad titles.
+    session[:bad_title] = nil
+    # Save title, if present.
+    if params[:user][:title].present?
+      # Attempt to save; if failed, flash with warning.
+      begin
+        @user.update_attributes!(title: params[:user][:title])
+      rescue ActiveRecord::RecordInvalid
+        flash[:warning] = "Unable to save. (Too long?)"
+        session[:bad_title] = params[:user][:title]
+      end
+    elsif old_title
+      @user.update_attributes!(title: nil)
+      flash[:info] = "Title deleted."
+    end
+    # Same logic as before, now for description.
+    # Make sure two different [:success] flashes work! Probably not!
+    redirect_to "/users/#{@user.id}"
   end
 
   private

@@ -1,12 +1,12 @@
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
-  
+
   def setup
     @user = users(:god)
   end
-  
-  test "unsuccessful edit" do 
+
+  test "unsuccessful edit" do
     log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
@@ -16,7 +16,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password_confirmation:  'bar' }
     assert_template 'users/edit'
   end
-  
+
   test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
     assert_not_nil session[:forwarding_url]
@@ -35,5 +35,5 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal @user.name, name
     assert_equal @user.email, email
   end
-  
+
 end

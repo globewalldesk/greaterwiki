@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6,
-                                 message: "must have at least 6 characters" }
+                                 message: "must have at least 6 characters"},
+                       on: create
   validates :title, length: { maximum: 255 }
   validates :description, length: { maximum: 13_000 } # ~2000 words
 
