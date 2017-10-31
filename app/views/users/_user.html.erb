@@ -5,4 +5,13 @@
         | <%= link_to "delete", user, method: :delete,
                        data: { confirm: "You sure?" } %>
       <% end %>
+      <% if user.title %>
+        <br>
+        <span class="index-title">
+          <%= user.title %>
+          <% if user.description %>
+            <%= link_to "[more...]", user_path(user) %>
+          <% end %>
+        </span>
+      <% end %>
     </li>
