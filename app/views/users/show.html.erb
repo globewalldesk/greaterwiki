@@ -43,17 +43,6 @@
           <span class="glyphicon glyphicon-pencil"></span>
           <span id="user_title_text"><%= @user.title %></span>
         </h2>
-<!-- NOT SURE WHY THIS ISN'T WORKING
-        <% if session[:bad_title] %>
-          <script>
-            var ready = function() {
-              showEditUserTitle();
-            };
-            $(document).ready(ready);
-            $(document).on('page:load', ready);
-          </script>
-        <% end %>
--->
       <% else %>
         <h2 class="user_title">
           <span id="user_title_text" class="italics silver">
@@ -95,17 +84,6 @@
           <span class="glyphicon glyphicon-pencil"></span>
           <span id="user_title_text"><%= @user.description %></span>
         </p>
-<!-- NOT SURE WHY THIS ISN'T WORKING
-        <% if session[:bad_title] %>
-          <script>
-            var ready = function() {
-              showEditUserTitle();
-            };
-            $(document).ready(ready);
-            $(document).on('page:load', ready);
-          </script>
-        <% end %>
--->
       <% else %>
         <p class="user_desc">
           <span id="user_desc_text" class="italics silver">

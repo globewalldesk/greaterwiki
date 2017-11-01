@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
                        on: create
   validates :title, length: { maximum: 255 }
   validates :description, length: { maximum: 13_000 } # ~2000 words
+  default_scope -> { order(created_at: :desc) }
 
   # Returns the hash digest of the given string.
   def User.digest(string)

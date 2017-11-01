@@ -28,7 +28,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     patch "/users/#{user.id}/update_description", user:
           { title: "x" * 256 }
     assert flash[:warning] # JS should disallow submission, so it doesn't
-                           # get this far.
+                           # get this far. Not done yet.
     descriptio = <<DESC_END
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar vel nulla in finibus. Sed vulputate, orci pellentesque rutrum varius, augue nibh suscipit dui, non lacinia dui leo et orci. Aenean ac arcu non ante venenatis convallis. Nulla lobortis ex ut tempus accumsan. Ut sem mi, semper nec blandit vitae, blandit nec ipsum. In egestas, magna at eleifend fermentum, justo tortor cursus libero, ac convallis ipsum magna a nulla. Aliquam erat volutpat. Vestibulum sed augue dictum, tempor eros ac, consequat massa.
 
@@ -57,7 +57,7 @@ DESC_END
     patch "/users/#{user.id}/update_description", user:
           { description: "x" * 13_001 }
     assert flash[:warning] # JS should disallow submission, so it doesn't
-                           # get this far
+                           # get this far. Not done yet.
   end
 
   test "profile submits new description successfully (or not)" do
