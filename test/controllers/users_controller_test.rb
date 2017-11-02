@@ -71,9 +71,12 @@ class UsersControllerTest < ActionController::TestCase
   # NOTE! This isn't red and can't be until the controller method is written!
   test "only user can edit own title and description" do
     log_in_as(@user)
-    assert @other_user.title == nil
-    post :update_description, id: @other_user, params: { title: "I am the man" }
-    assert_not_equal @other_user.title, "I am the man"
+    assert_nil @other_user.title
+    sad_title = "I am a man of constant sorrow."
+    patch :update_description, id: @other_user, user:
+      { title: sad_title }
+    refute_equal @other_user.reload.title, sad_title
+    assert_redirected_to root_url
   end
 
 end

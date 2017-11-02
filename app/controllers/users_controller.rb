@@ -71,34 +71,34 @@ class UsersController < ApplicationController
     old_title = @user.title
     # For smart message, first check if user had a description.
     old_desc = @user.description
-    if params[:user][:title]
+    if title_desc_params[:title]
       # And clear out any bad titles.
       session[:bad_title] = nil
       # Save title, if present.
-      if params[:user][:title].present?
+      if title_desc_params[:title].present?
         # Attempt to save; if failed, flash with warning.
         begin
-          @user.update_attributes!(title: params[:user][:title])
+          @user.update_attributes!(title: title_desc_params[:title])
         rescue ActiveRecord::RecordInvalid
           flash[:warning] = "Unable to save. (Too long?)"
-          session[:bad_title] = params[:user][:title]
+          session[:bad_title] = title_desc_params[:title]
         end
       elsif old_title
         @user.update_attributes!(title: nil)
         flash[:info] = "Title deleted."
       end
     end
-    if params[:user][:description]
+    if title_desc_params[:description]
       # And clear out any bad descriptions.
       session[:bad_desc] = nil
       # Save description, if present.
-      if params[:user][:description].present?
+      if title_desc_params[:description].present?
         # Attempt to save; if failed, flash with warning.
         begin
-          @user.update_attributes!(description: params[:user][:description])
+          @user.update_attributes!(description: title_desc_params[:description])
         rescue ActiveRecord::RecordInvalid
           flash[:warning] = "Unable to save. (Too long?)"
-          session[:bad_desc] = params[:user][:description]
+          session[:bad_desc] = title_desc_params[:description]
         end
       elsif old_desc
         @user.update_attributes!(description: nil)
@@ -137,6 +137,10 @@ class UsersController < ApplicationController
     # Confirms that a user is an admin user.
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def title_desc_params
+      params.require(:user).permit(:title, :description)
     end
 
 end

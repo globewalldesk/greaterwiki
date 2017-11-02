@@ -13,7 +13,6 @@ $gray-medium-light: #eaeaea;
   box-sizing:          border-box;
 }
 
-
 /* ========================================================================== */
 /* universal */
 
@@ -245,6 +244,9 @@ input {
     font-size: 0.7em;
     cursor: pointer;
     margin: 5px 0 0 7px;
+    &:hover {
+      color: green;
+    }
   }
   .italics {
     font-style: italic;
@@ -260,6 +262,11 @@ input {
     .title_input {
       width: 100%;
       margin-top: 20px; /* Otherwise form appears too high */
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1.4em;
+      letter-spacing: -1px;
+      color: #777;
     }
   }
 
@@ -273,6 +280,9 @@ input {
     }
     .glyphicon-ok {
       color: green;
+      &:hover {
+        color: darkgreen;
+      }
     }
     .glyphicon-remove {
       color: red;
@@ -296,10 +306,22 @@ input {
     cursor: pointer;
   }
 
+  #user_title_text {
+    margin-left: -2px;
+  }
+
   #edit_user_title, #edit_user_desc {
     display: none;
+
     textarea {
       height: 200px;
+      font-size: 1.3em;    /* same as .user_desc */
+      line-height: 1.4em;  /* same as .user_desc */
+    }
+    .formatting_link {
+      float: right;
+      margin: -5px 15px 0 0;
+      font-size: 0.8em;
     }
   }
 

@@ -19,10 +19,6 @@ function showEditUserDesc() {
   $("#edit_user_desc").show();
   var field = $(".desc_input");
   field.focus();
-  // Move cursor to end of string.
-  var temp = field.val();
-  field.val('');
-  field.val(temp);
 }
 
 

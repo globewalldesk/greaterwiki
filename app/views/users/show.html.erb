@@ -39,7 +39,7 @@
       <% if @user.title %>
         <!-- Display user title to user -->
         <h2 class="user_title">
-          <span class="glyphicon glyphicon-play"></span>&nbsp;
+          <span class="glyphicon glyphicon-play"></span>
           <span class="glyphicon glyphicon-pencil"></span>
           <span id="user_title_text"><%= @user.title %></span>
         </h2>
@@ -75,29 +75,34 @@
             <%= f.text_area :description,
                              class: 'form-control desc_input' %>
           </span>
+          <span class="formatting_link">
+            <%= link_to "formatting help",
+            "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
+            target: "_blank", class: "formatting_link" %>
+          </span>
         <% end %>
       </span>
       <% if @user.description %>
         <!-- Display user title to user -->
-        <p class="user_desc">
-          <span class="glyphicon glyphicon-play"></span>&nbsp;&nbsp;
+        <div class="user_desc">
+          <span class="glyphicon glyphicon-play"></span>
           <span class="glyphicon glyphicon-pencil"></span>
-          <span id="user_title_text"><%= @user.description %></span>
-        </p>
+          <span id="user_desc_text"><%= markdown(@user.description) %></span>
+        </div>
       <% else %>
-        <p class="user_desc">
+        <div class="user_desc">
           <span id="user_desc_text" class="italics silver">
             Introduce yourself</span>
           <span class="glyphicon glyphicon-plus silver"></span>
-        </p>
+        </div>
       <% end %>
     <% elsif current_user != @user %>
       <% if @user.description %>
         <!-- Display user description to other user -->
-        <h2 class="user_desc_other_user">
+        <div class="user_desc_other_user">
           <span class="glyphicon glyphicon-play"></span>
-          <span class="user_desc_text"><%= @user.description %></span>
-        </h2>
+          <span class="user_desc_text"><%= markdown(@user.description) %></span>
+        </div>
       <% end %>
     <% end %>
   </div>
