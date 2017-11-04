@@ -7,9 +7,10 @@
 * Set up Guard and always keep it running.
 
 ## Development phase
-* To the greatest extent feasible, practice TDD.
+* To the greatest extent feasible, practice TDD. The most obvious tests will suggest themselves, but when you get to a stopping place (e.g., when you're going to do a push), add less obvious tests as well.
 * Develop controllers, test data, and tests before designing views.
 * Document everything:
   * Always put one or two lines (at least) before every method, explaining what it does.
   * Take special care to note anything unusual.
-* Make SuperMemo questions about any new methods, tech, concepts, etc. you learn *as you develop* (not afterward; but if you must, then go ahead do it afterward).
+  * If you forget to do this, go back afterward and add it in.
+* Make SuperMemo questions about any new methods, commands, tools, concepts, etc. you learn *as you develop* (not afterward; but if you must, then go ahead do it afterward).
