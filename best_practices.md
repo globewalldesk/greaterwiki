@@ -3,7 +3,7 @@
 ## Start-up phase
 * Always discuss purpose and general strategy before starting a project.
 * Always make wireframes.
-* If you know you're going to need some big complex tech (like a new JS library or a complex-to-use gem), study it independently first.
+* If you know you're going to need some big complex tech (like a new JS library or a complex-to-use gem), study it independently first. You'll inevitably regret learning it on the fly, and you'll want to learn it systematically sometime anyway. Might as well do it first.
 * Set up Guard and always keep it running.
 
 ## Development phase
