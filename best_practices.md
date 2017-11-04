@@ -19,6 +19,6 @@
 * Make SuperMemo questions about any new methods, commands, tools, concepts, etc. you learn *as you develop* (not afterward; but if you must, then go ahead do it afterward).
 * Refactor regularly (e.g., after each major push):
   * Review methods; make sure they can't be done more elegantly.
-  * DRY up your code; add helper methods.
+  * DRY up your code; make your main (e.g., controller) methods clearer and more manageable by transferring code, especially any code that might be reusable, to helper methods.
   * Don't forget to review test code. It needn't be perfect but it can be usefully cleaned up.
   * Add and refactor documentation, which can get old and positively misleading. Check for good documentation throughout.
