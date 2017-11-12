@@ -19,12 +19,15 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     log_in_as(@non_admin)
     get user_path(@non_admin)
     assert_nil @non_admin.title
+    title =  "I am a man of constant sorrow."
     patch "/users/#{@non_admin.id}/update_description", user:
-      { title: "I am a man of constant sorrow." }
+      { title: title }
     user = assigns(:user)
     user.reload.title
-    assert user.title == "I am a man of constant sorrow."
+    assert user.title == title
     assert_redirected_to user_url(@non_admin)
+    follow_redirect!
+    assert_match title, response.body
     patch "/users/#{user.id}/update_description", user:
           { title: "x" * 256 }
     assert flash[:warning] # JS should disallow submission, so it doesn't
@@ -54,6 +57,8 @@ DESC_END
     user.reload.description
     assert user.description == descriptio
     assert_redirected_to user_url(@non_admin)
+    follow_redirect!
+    assert_match descriptio, response.body
     patch "/users/#{user.id}/update_description", user:
           { description: "x" * 13_001 }
     assert flash[:warning] # JS should disallow submission, so it doesn't

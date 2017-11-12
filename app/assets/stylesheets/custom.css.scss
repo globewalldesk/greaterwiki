@@ -1,5 +1,6 @@
 $navbar-inverse-link-color: #ddd;
-
+$dropdown-link-hover-bg: #e8e8e8;
+$dropdown-divider-bg: #bbb;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -122,7 +123,6 @@ header {
     }
   }
 
-  $dropdown-divider-bg: #bbb;
 }
 
 
