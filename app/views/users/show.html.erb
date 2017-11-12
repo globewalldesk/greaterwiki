@@ -85,7 +85,7 @@
         <div class="user_desc">
           <span class="glyphicon glyphicon-play"></span>
           <span class="glyphicon glyphicon-pencil"></span>
-          <span id="user_desc_text"><%= markdown(@user.description) %></span>
+          <div id="user_desc_text"><%= markdown(@user.description) %></div>
         </div>
       <% else %>
         <div class="user_desc">
@@ -99,7 +99,7 @@
         <!-- Display user description to other user -->
         <div class="user_desc_other_user">
           <span class="glyphicon glyphicon-play"></span>
-          <span class="user_desc_text"><%= markdown(@user.description) %></span>
+          <div class="user_desc_text"><%= markdown(@user.description) %></div>
         </div>
       <% end %>
     <% end %>
